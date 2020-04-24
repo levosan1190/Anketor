@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center mb-3"> Anket Soruları </h1>
+
+    {% if question %}
+        {% if choices_list %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="lead">{{ question.question_text }}</p>
+                    <ul class="list-group list">
+                        {% for choice in choices_list %}
+                            <div class="col-md-10">
+                            <a href="{{ question.id }}/{{ choice.id }}/vote" class="list-group-item list-group-item-action"> {{ choice.choice_text }}</a>
+
+                            </div>
+                            </ul>
+                        {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+
+{#<img src="{{ choice.imgpath }}" class="pull-left photo">#}
+{#                                <li class="list-group-item">{{ choice.choice_text }} </li>#}
+{#                                <form action="{% url 'polls:vote' question.id%}" method="post">#}
+{#                                    {% csrf_token %}#}
+{#                                    <input type="submit" value="vote">#}
+{##}
+{#                                <a href="{% url 'polls:detail' choice.id %}" class=""></a>#}
+{#                                </form>#}
+
+
+{#<a href="{% url 'polls:vote' question_id=choice %}"#}
+{#                                   class="list-group-item list-group-item-action"> {{ choice.choice_text }} </a>#}

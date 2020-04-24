@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="text-center mb-3"> Anket Sonuçları </h1>
+    {% if question %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="lead">{{ question.question_text }}</p>
+                <ul class="list-group list">
+                    {% for choice in question.choice_set.all %}
+                        <div class="col-md-10">
+                            <li class="list-group-item"> {{ choice.choice_text }}
+                                <span class="badge badge-primary badge-pill">{{ choice.votes }} </span>
+                            </li>
+                        </div>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

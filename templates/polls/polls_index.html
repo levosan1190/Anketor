@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="text-center mb-3"> Anket Soruları </h1>
+
+{% if latest_question_list %}
+    {% for latest_question in latest_question_list %}
+        <div class="card mb-3">
+        <div class="card-body">
+            <p class="lead">{{ latest_question.question_text }}</p>
+            <a href="{% url 'polls:detail' latest_question.id %}"
+               class="btn btn-primary btn-sm"> Oyla</a>
+
+            <a href="{% url 'polls:results' latest_question.id %}"
+               class="btn btn-secondary btn-sm"> Sonuçlar</a>
+
+        </div>
+        </div>
+
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
